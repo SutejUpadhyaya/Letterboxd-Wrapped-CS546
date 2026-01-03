@@ -1,53 +1,134 @@
-# CS546_Letterboxd_Analyzer
-Note: This repository is a fork of a collaborative group project. 
-It reflects work I contributed to during development alongside my teammates.
+# Letterboxd Wrapped – Movie Analytics Dashboard
+
+A full-stack web application that processes and analyzes Letterboxd viewing history to generate personalized film statistics, insights, and recommendations. Built with Node.js, Express, MongoDB, and Handlebars.
+
+Note: This repository is a fork of a collaborative group project and reflects work I contributed to alongside my teammates.
+
+---
+
 ## Features
-### Core
-- Users can upload their .zip file from Letterboxd to load their data
-- Users can reupload their .zip file to update their data
-- An admin account that allows the admin to add movies to the system, edit existing movies, and delete movies from the system.
-- Letterboxd Wrapped would display movie statistics:
-- Top genres
-- Top directors
-- Top actors
-- Average movie rating
-- Average difference between the user’s rating and global movie averages
-- The number of hours spent watching movies
-- Can calculate based on all-time data, the past year, or month.
-- Recommendation based on top genres, directors, and actors
-- Each time a user updates their data, it will save all of the movies watched during that period since the last update. It will serve as a time capsule for that period.
-- Users can manually find movies from our database and input/update their rating data
-- Commenting on the movie pages to interact with other users
-- Integration with movie posters from Letterboxd.
-- Allows users to follow other users
-- Users have a public profile page where users can compare their statistics with other users (top movies, genres, hours spent watching).
+
+### Core Functionality
+- Upload Letterboxd `.zip` export to load viewing history
+- Re-upload data to update statistics over time
+- Admin account for managing movie records (add / edit / delete)
+- Integration with Letterboxd poster assets
+
+### Personalized Statistics
+- Top genres, directors, and actors
+- Average user rating
+- Difference from global rating averages
+- Total hours spent watching movies
+- Time-range filtering:
+  - all-time
+  - past year
+  - past month
+- Recommendation generation based on viewing patterns
+- Tracks watch history across multiple uploads (time-capsule feature)
+
+### User & Social Features
+- Public profile pages with comparable user statistics
+- Follow other users
+- Comment on movie pages
+- Manually add or update ratings via database search
+
+---
+
 ## Usage
-### Seeding
-`npm run seed` to seed database and admin account
-This is the only way to create an admin account, credentials:
+
+### Seeding Database
+
+Creates the initial database and admin account.
+
+```bash
+npm run seed
+```
+
+Default admin credentials:
+
+```
 Username: admin
 Password: admin
+```
 
-### Starting Server
-`npm start` to run app.js, will run rest of files
+---
 
-### Example Run
-From /createaccount (linked from all pages) sign up as a new account:
+### Starting the Application
 
-Parameters:
-Username, Password, Password Confirmation, Age, Description (Optional), Upload Zip (Optional)
-All have proper error checking from both client side and server side. Username is checked for uniqueness (case-insensitive). Passwords are checked for equality and then salted, hashed, and stored on server. Age is checked for validity (13-100)
+```bash
+npm start
+```
 
-Data flow:
-Upload zip file downloaded from letterboxd (Export data from https://letterboxd.com/settings/data/) after creating account and/or manually add movies from search function.
-Uploading zip files will take a while. Two options are provided, the kurk file is shorter to upload but has less extensive data.
+Runs `app.js` and launches the full application.
 
-Movie Search:
-From /movies/lookup, type in search term and recieve list of all movies with information such as release year and director that match that name with clickable links.
-Clicking on /movies/:id for a given movie will link to page for that movie with information on description, tagline, actors, and much more. Movie can be added to account statisitics with the click of a button.
+---
 
-Account lookup:
-From /accountlookup Can be used to find other accounts, see their statistics, and follow them
+## Application Flow
 
-My Account:
-Used to see your own statistics or update information such as age or description.
+### Account Creation
+
+Accessible at `/createaccount`.
+
+Users may register with:
+
+- username
+- password and confirmation
+- age
+- optional profile description
+- optional Letterboxd zip upload
+
+Validation includes:
+
+- username uniqueness (case-insensitive)
+- password equality and hashing
+- age validation (13–100)
+- client-side and server-side checks
+
+---
+
+### Data Import
+
+Letterboxd exports may be downloaded from:
+
+https://letterboxd.com/settings/data/
+
+Two upload modes are supported:
+
+- full export — detailed analytics
+- reduced dataset — faster upload with limited data
+
+Users may also manually search and add films.
+
+---
+
+### Movie Search
+
+Available at `/movies/lookup`.
+
+- search for films by name
+- results include release year and director
+- selecting `/movies/:id` opens a detailed film page
+- films can be added to user statistics
+
+---
+
+### Account Lookup
+
+Available at `/accountlookup`.
+
+- search for users
+- view profile statistics
+- follow accounts
+
+---
+
+### My Account
+
+Allows users to:
+
+- view personal statistics
+- update profile information
+- upload or refresh Letterboxd data
+
+---
+
