@@ -1,4 +1,6 @@
 # CS546_Letterboxd_Analyzer
+Note: This repository is a fork of a collaborative group project. 
+It reflects work I contributed to during development alongside my teammates.
 ## Features
 ### Core
 - Users can upload their .zip file from Letterboxd to load their data
